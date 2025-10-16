@@ -9,11 +9,17 @@ Example usage:
 GPack replaces the python compiler for improved and convenient operation.
 
 > b - Big-Endian
+> 
 > l - Little-Endian
+> 
 > i - Int
+> 
 > I - Singed Int
+> 
 > s - String
+> 
 > o - Bool
+> 
 > n - Bytes
 
 More usage:
