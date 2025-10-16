@@ -37,3 +37,15 @@ More usage:
 > [123, -123, 'aboba', b'aboba\x00\x00\x00\x00\x00', 1234, True, False, 321]
 
 **You can use the space bar for ease of use**
+
+**Format Specifiers with sizes**
+
+Numbers after formats specify sizes in bytes:
+
+```python
+# Pack string (5 bytes) + int (4 bytes) + bool (1 byte)
+packed = ["hello", 123, True].pack("s i o", 5, 4, 1)
+
+# Unpack with same sizes
+unpacked = packed.unpack("s i o", 5, 4, 1)
+```
