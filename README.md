@@ -1,2 +1,28 @@
-# GPack
-An analogue of Struct for python and even better!
+# **An analogue of Struct for python and even better!**!
+
+Example usage:
+
+> import gpack
+> 
+> "1234".pack("bi",2)
+
+GPack replaces the python compiler for improved and convenient operation.
+
+> b - Big-Endian
+> l - Little-Endian
+> i - Int
+> I - Singed Int
+> s - String
+> o - Bool
+> n - Bytes
+
+More usage:
+
+> test_data = [123, -123, "aboba", b"aboba", 1234, True, False, 321]
+> import gpack
+> packed = test_data.pack("bilIsniooi", 1, 1, 5, 10, 5, 1, 1, 2)
+> unpacked = packed.unpack("bi lI s n i o o i", 1, 1, 5, 10, 5, 1, 1, 2)
+> print(unpacked)
+> [123, -123, 'aboba', b'aboba\x00\x00\x00\x00\x00', 1234, True, False, 321]
+
+**You can use the space bar for ease of use**
