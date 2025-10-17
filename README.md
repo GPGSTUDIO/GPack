@@ -1,5 +1,10 @@
 # **An analogue of Struct for python and even better!**!
 
+Installing:
+```python
+pip install gpack
+```
+
 Example usage:
 
 ```python
