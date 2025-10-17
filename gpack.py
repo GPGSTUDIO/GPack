@@ -1,7 +1,10 @@
 import builtins
 import ast
-from Converter import *
-from deep_hexlib import *
+from .Converter import binary2deciminal,deciminal2binary,hex2binary,binary2hex
+from .deep_hexlib import text2hex,hex2text
+
+__version__ = "0.0.4"
+__all__ = ['binary2deciminal', 'deciminal2binary', 'hex2binary', 'binary2hex', 'text2hex', 'hex2text','pack','unpack']
 
 class gpack_func_str(str):
     def pack(self,arg,count):
@@ -34,7 +37,7 @@ class gpack_func_str(str):
                 raise ValueError(f"Value {num} out of range for {size} bytes")
             
             # Обработка отрицательных чисел для signed
-            if arg[0] == "i" and num < 0:
+            if arg[0] == "I" and num < 0:
                 num = (1 << (size * 8)) + num
             
             # Прямое преобразование в байты
@@ -199,7 +202,7 @@ class gpack_func_list(list):
                     raise ValueError(f"Value {num} out of range for {size} bytes")
                 
                 # Обработка отрицательных чисел для signed
-                if arg[0] == "i" and num < 0:
+                if arg[0] == "I" and num < 0:
                     num = (1 << (size * 8)) + num
                 
                 # Прямое преобразование в байты
@@ -241,7 +244,32 @@ class gpack_func_bool:
     
     def __repr__(self):
         return repr(self._value)
-            
+
+def pack(data, format_str, *sizes):
+    if isinstance(data, str):
+        return gpack_func_str(data).pack(format_str, *sizes)
+    elif isinstance(data, list):
+        return gpack_func_list(data).pack(format_str, *sizes)
+    elif isinstance(data, bytes):
+        return gpack_func_bytes(data).pack(format_str, *sizes)
+    elif isinstance(data, bool):
+        return gpack_func_bool(data).pack(format_str, *sizes)
+    else:
+        return gpack_func_list([data]).pack(format_str, *sizes)
+
+def unpack(data, format_str, *sizes):
+    if isinstance(data, bytes):
+        result = gpack_func_bytes(data).unpack(format_str, *sizes)
+        return result[0] if len(result) == 1 else result
+    else:
+        raise TypeError("Unpack requires bytes data")
+
+# Обновляем __all__
+__all__ = [
+    'binary2deciminal', 'deciminal2binary', 'hex2binary', 'binary2hex', 
+    'text2hex', 'hex2text', 'pack', 'unpack'
+]
+
 class SimpleCompiler:
     def __init__(self):
         self.original_compile = builtins.compile
