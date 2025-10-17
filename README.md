@@ -20,7 +20,7 @@ GPack replaces the python compiler for improved and convenient operation.
 > 
 > i - Int
 > 
-> I - Singed Int
+> I - Signed Int
 > 
 > s - String
 > 
@@ -41,7 +41,7 @@ print(unpacked)
 [123, -123, 'aboba', b'aboba\x00\x00\x00\x00\x00', 1234, True, False, 321]
 ```
 
-**You can use the space bar for ease of use**
+**You can use the spaces for ease of use**
 
 **Format Specifiers with sizes**
 
