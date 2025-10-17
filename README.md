@@ -2,9 +2,10 @@
 
 Example usage:
 
-> import gpack
-> 
-> "1234".pack("bi",2)
+```python
+import gpack 
+"1234".pack("bi",2)
+```
 
 GPack replaces the python compiler for improved and convenient operation.
 
@@ -24,17 +25,16 @@ GPack replaces the python compiler for improved and convenient operation.
 
 More usage:
 
-> test_data = [123, -123, "aboba", b"aboba", 1234, True, False, 321]
-> 
-> import gpack
-> 
-> packed = test_data.pack("bilIsniooi", 1, 1, 5, 10, 5, 1, 1, 2)
-> 
-> unpacked = packed.unpack("bi lI s n i o o i", 1, 1, 5, 10, 5, 1, 1, 2)
-> 
-> print(unpacked)
-> 
-> [123, -123, 'aboba', b'aboba\x00\x00\x00\x00\x00', 1234, True, False, 321]
+```python
+test_data = [123, -123, "aboba", b"aboba", 1234, True, False, 321]
+import gpack
+packed = test_data.pack("bilIsniooi", 1, 1, 5, 10, 5, 1, 1, 2)
+
+unpacked = packed.unpack("bi lI s n i o o i", 1, 1, 5, 10, 5, 1, 1, 2)
+print(unpacked)
+
+[123, -123, 'aboba', b'aboba\x00\x00\x00\x00\x00', 1234, True, False, 321]
+```
 
 **You can use the space bar for ease of use**
 
