@@ -8,32 +8,32 @@ def hex2binary(hex):
             print(f"Недопустимый hex символ: {i}")
     return binary_result
 
-def deciminal2binary(deciminal):
+def decimal2binary(decimal):
     try:
-        deciminal = int(deciminal)
-        if deciminal == 0:
+        decimal = int(decimal)
+        if decimal == 0:
             return "0"
         binary = ""
-        num = deciminal
+        num = decimal
         while num > 0:
             binary = str(num % 2) + binary
             num = num // 2
         return binary
     except Exception as e:
-        print(f"Недопустимый deciminal символ! Ошибка: {e}.")
+        print(f"Недопустимый decimal символ! Ошибка: {e}.")
         
-def binary2deciminal(binary):
+def binary2decimal(binary):
     try:
         binary = str(binary)
         if binary == "0":
             return 0
-        deciminal = 0
+        decimal = 0
         length = len(binary)
         for i in range(length):
             digit = int(binary[i])
             power = length - i - 1
-            deciminal += digit * (2 ** power)
-        return deciminal
+            decimal += digit * (2 ** power)
+        return decimal
     except Exception as e:
         print(f"Недопустимый binary символ! Ошибка: {e}.")
 
@@ -57,7 +57,7 @@ def binary2hex(binary):
         print(f"Недопустимый binary символ! Ошибка: {e}.")
 
 if __name__=='__main__':
-    print('1 - Hex to Binary, 2 - Binary to Hex, 3 - Deciminal to Binary, 4 - Binary to Deciminal, 5 - Hex to Deciminal, 6 - Deciminal to Hex:')
+    print('1 - Hex to Binary, 2 - Binary to Hex, 3 - decimal to Binary, 4 - Binary to decimal, 5 - Hex to decimal, 6 - decimal to Hex:')
     while True:
         mode = input('Mode: ')
         if mode=="1":
@@ -68,13 +68,13 @@ if __name__=='__main__':
             print(f"Binary2Hex: {binary2hex(input('Enter Binary: '))}")
         if mode=="3":
             print(f"Selected mode: {mode}")
-            print(f"Deciminal2Binary: {deciminal2binary(input('Enter Deciminal: '))}")
+            print(f"decimal2Binary: {decimal2binary(input('Enter decimal: '))}")
         if mode=="4":
             print(f"Selected mode: {mode}")
-            print(f"Binary2Deciminal: {binary2deciminal(input('Enter Binary: '))}")
+            print(f"Binary2decimal: {binary2decimal(input('Enter Binary: '))}")
         if mode=="5":
             print(f"Selected mode: {mode}")
-            print(f"Hex2Deciminal: {binary2deciminal(hex2binary(input('Enter Hex: ')))}")
+            print(f"Hex2decimal: {binary2decimal(hex2binary(input('Enter Hex: ')))}")
         if mode=="6":
             print(f"Selected mode: {mode}")
-            print(f"Deciminal2Hex: {binary2hex(deciminal2binary(input('Enter Deciminal: ')))}")
+            print(f"decimal2Hex: {binary2hex(decimal2binary(input('Enter decimal: ')))}")
